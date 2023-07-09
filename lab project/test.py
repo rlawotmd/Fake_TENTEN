@@ -20,8 +20,7 @@ window.resizable(False, False)
 
 
 #이미지 삽입
-logo = PhotoImage(file = "C:/Users/user/Documents/fake_tenten/Fake_TENTEN/image/sample_logo.png")
-##menu = PhotoImage(file = "../image/sample_logo.png") 이게 되야 되는데 흠
+logo = PhotoImage(file = "./image/sample_logo.png")
 #원본 크기
 ori_logo_width = logo.width()
 ori_logo_height = logo.height()
@@ -38,8 +37,7 @@ L_logo = tk.Label(window, image = logo, width = 400, height = 100) #
 L_logo.place(x = 200, y = 25)
 
 
-menu = PhotoImage(file = "C:/Users/user/Documents/fake_tenten/Fake_TENTEN/image/sample_menu.png")
-##menu = PhotoImage(file = "../image/sample_menu.png") 이게 되야 되는데 흠
+menu = PhotoImage(file = "./image/sample_menu.png")
 ori_menu_width = menu.width()
 ori_menu_height = menu.height()
 new_menu_width = 300
