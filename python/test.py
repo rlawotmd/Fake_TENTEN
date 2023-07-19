@@ -3,6 +3,7 @@ import pygame
 from pygame.locals import *
 import time
 
+
 TARGET_FPS = 30
 clock = pygame.time.Clock()
 
@@ -56,4 +57,3 @@ while True:
 
     pygame.display.flip()
     clock.tick(TARGET_FPS)
-
