@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
@@ -8,7 +9,7 @@
       position: relative;
       width: 200px;
       height: 200px;
-      background: 'yellow';
+      background: yellow;
       overflow: hidden;
     }
     .gopher,
@@ -58,10 +59,11 @@
 </head>
 <body>
   <div>
-    <span id="timer">60</span>초&nbsp;
+    <span id="timer">30</span>초&nbsp;
     <span id="score">0</span>점
     <span id="life">3</span>목숨
     <button id="start">시작</button>
+    <button id="startAgainButton">다시 시작</button>
   </div>
   <div id="game">
     <div class="row">
@@ -125,96 +127,133 @@
       </div>
     </div>
   </div>
-</body>
-<script>
-  const $timer = document.querySelector('#timer');
-  const $score = document.querySelector('#score');
-  const $game = document.querySelector('#game');
-  const $life = document.querySelector('#life');
-  const $start = document.querySelector('#start');
-  const $$cells = document.querySelectorAll('.cell');
-  const holes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  let started = false;
-  let score = 0;
-  let time = 60;
-  let life = 3;
-  let timerId;
-  let tickId;
-  $start.addEventListener('click', () => {
-    if (started) return;
-    started = true;
-    timerId = setInterval(() => {
-      time = (time * 10 - 1) / 10; // 소수점 계산 시 문제 해결
-      $timer.textContent = time;
-      if (time === 0) {
-        setTimeout(() => {
+  <script>
+    const timerElement = document.getElementById('timer');
+    const scoreElement = document.getElementById('score');
+    const lifeElement = document.getElementById('life');
+    const startButton = document.getElementById('start');
+    const startAgainButton = document.getElementById('startAgainButton');
+    const cells = document.querySelectorAll('.cell');
+    const holes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let started = false;
+    let score = 0;
+    let time = 30;
+    let life = 3;
+    let timerId;
+    let tickId;
+
+    startButton.addEventListener('click', startGame);
+    startAgainButton.addEventListener('click', resetGame);
+
+    function startGame() {
+      if (started) return;
+      started = true;
+      timerId = setInterval(() => {
+        time = (time * 10 - 1) / 10;
+        timerElement.textContent = time;
+        if (time === 0) {
           clearInterval(timerId);
           clearInterval(tickId);
-          alert(`게임 오버 ! 점수는 ${score}점`);
-        }, 50);
-      }
-    }, 100);
-    tickId = setInterval(tick, 1000);
-    tick();
-  });
-  let gopherPercent = 0.3;
-  let bombPercent = 0.5;
-  function tick() {
-    holes.forEach((hole, index) => {
-      if (hole) return; // setTimeout Id를 가지고 있을 경우, return
-      const randomValue = Math.random();
-      if (randomValue < gopherPercent) {
-        const $gopher = $$cells[index].querySelector('.gopher');
-        holes[index] = setTimeout(() => {
-          $gopher.classList.add('hidden');
-          holes[index] = 0;
-        }, 1000);
-        $gopher.classList.remove('hidden');
-      } else if (randomValue < bombPercent) {
-        const $bomb = $$cells[index].querySelector('.bomb');
-        holes[index] = setTimeout(() => {
-          $bomb.classList.add('hidden');
-          holes[index] = 0;
-        }, 1000);
-        $bomb.classList.remove('hidden');
-      }
-      // if(!($gopher.classList.contains('hidden'))) return;
-    });
-  }
-  $$cells.forEach(($cell, index) => {
-    $cell.querySelector('.gopher').addEventListener('click', (event) => {
-      if (!event.target.classList.contains('dead')) {
-        score += 1;
-        $score.textContent = score;
-      }
-      event.target.classList.add('dead');
-      event.target.classList.add('hidden');
-      clearTimeout(holes[index]);
-      setTimeout(() => {
-        holes[index] = 0;
-        event.target.classList.remove('dead');
-      }, 1000);
-    });
-    $cell.querySelector('.bomb').addEventListener('click', (event) => {
-      if (!event.target.classList.contains('boom')) {
-        life -= 1;
-        $life.textContent = life;
-        if (life === 0) {
           setTimeout(() => {
-            clearInterval(timerId);
-            clearInterval(tickId);
-            alert(`게임 오버 ! 점수는 ${score}점`);
+            alert(`게임 오버! 점수는 ${score}점`);
+            showStartAgainButton();
           }, 50);
         }
-      }
-      event.target.classList.add('boom');
-      event.target.classList.add('hidden');
-      clearTimeout(holes[index]);
-      setTimeout(() => {
+      }, 100);
+      tickId = setInterval(tick, 1000);
+      tick();
+    }
+
+    function showStartAgainButton() {
+      startAgainButton.style.display = 'inline-block';
+    }
+
+    function resetGame() {
+      started = false;
+      score = 0;
+      time = 30;
+      life = 3;
+      clearInterval(timerId);
+      clearInterval(tickId);
+
+      timerElement.textContent = time;
+      scoreElement.textContent = score;
+      lifeElement.textContent = life;
+
+      cells.forEach((cell, index) => {
+        const gopherElement = cell.querySelector('.gopher');
+        const bombElement = cell.querySelector('.bomb');
+        gopherElement.classList.add('hidden');
+        bombElement.classList.add('hidden');
+
+        clearTimeout(holes[index]);
         holes[index] = 0;
-        event.target.classList.remove('boom');
-      }, 1000);
+      });
+
+      startAgainButton.style.display = 'none';
+    }
+
+    function tick() {
+      holes.forEach((hole, index) => {
+        if (hole) return;
+        const randomValue = Math.random();
+        if (randomValue < 0.3) {
+          const gopherElement = cells[index].querySelector('.gopher');
+          holes[index] = setTimeout(() => {
+            gopherElement.classList.add('hidden');
+            holes[index] = 0;
+          }, 1000);
+          gopherElement.classList.remove('hidden');
+        } else if (randomValue < 0.5) {
+          const bombElement = cells[index].querySelector('.bomb');
+          holes[index] = setTimeout(() => {
+            bombElement.classList.add('hidden');
+            holes[index] = 0;
+          }, 1000);
+          bombElement.classList.remove('hidden');
+        }
+      });
+    }
+
+    cells.forEach((cell, index) => {
+      const gopherElement = cell.querySelector('.gopher');
+      const bombElement = cell.querySelector('.bomb');
+
+      gopherElement.addEventListener('click', () => {
+        if (!gopherElement.classList.contains('dead')) {
+          score += 1;
+          scoreElement.textContent = score;
+        }
+        gopherElement.classList.add('dead');
+        gopherElement.classList.add('hidden');
+        clearTimeout(holes[index]);
+        setTimeout(() => {
+          holes[index] = 0;
+          gopherElement.classList.remove('dead');
+        }, 1000);
+      });
+
+      bombElement.addEventListener('click', () => {
+        if (!bombElement.classList.contains('boom')) {
+          life -= 1;
+          lifeElement.textContent = life;
+          if (life === 0) {
+            clearInterval(timerId);
+            clearInterval(tickId);
+            setTimeout(() => {
+              alert(`게임 오버 ! 점수는 ${score}점`);
+            }, 50);
+          }
+        }
+        bombElement.classList.add('boom');
+        bombElement.classList.add('hidden');
+        clearTimeout(holes[index]);
+        setTimeout(() => {
+          holes[index] = 0;
+          bombElement.classList.remove('boom');
+        }, 1000);
+      });
     });
-  });
-</script>
+  </script>
+</body>
 </html>
