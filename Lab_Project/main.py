@@ -62,6 +62,9 @@ def call_Tic_Tac_Toe():
 
 def call_random_wheel():
     subprocess.call(["python", random_wheel])
+    
+def call_R_S_O():
+    subprocess.call(["python", R_S_P])    
 
 
 #게임 실행하는 버튼 생성
@@ -74,7 +77,7 @@ button.place(x = 410, y = 150)
 button = tk.Button(window, image = menu, text="돌려돌려 돌림판 실행", command = call_random_wheel, width = 340, height = 85)
 button.place(x = 50, y = 255)
 
-button = tk.Button(window, image = menu, text="터틀 실행", command = call_turtle, width = 340, height = 85)
+button = tk.Button(window, image = menu, text="가위바위보 실행", command = call_R_S_O, width = 340, height = 85)
 button.place(x = 410, y = 255)
 
 button = tk.Button(window, image = menu, text="터틀 실행", command = call_turtle, width = 340, height = 85)

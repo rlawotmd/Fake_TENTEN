@@ -5,33 +5,31 @@
 
 
 import time 
-
+import random
 time.set
-    import random
+
 
     #플레이어에게 입력받기 
     #(가위 = 0, 바위 =1, 보=2)
-    player_choices = ['가위', '바위', '보']
+player_choices = ['가위', '바위', '보']
 
-    def get_choice():
+def get_choice():
         a = input('가위 바위 보! :')     
         if a in player_choices:
             return get_choice(a)
         return 
 
-    #컴퓨터가 가위바위보 중 하나 고르기
-    computer_choice = random.choice(player_choices)
+#컴퓨터가 가위바위보 중 하나 고르기
+computer_choice = random.choice(player_choices)
 
-    #승패판정
-    if player_choice == computer_choice:
-        print('tie')
-    elif (player_choice == '가위' and computer_choice == '보') or
-    (player_choice == '바위' and computer_choice = '가위')or
-    (player_choice == '보' and computer_choice == '바위'):
-        print('win')
-    else:
-        print('lose')
+#승패판정
+if player_choices == computer_choice:
+    print('tie')
+elif (player_choices == '가위' and computer_choice == '보') or (player_choices == '바위' and computer_choice == '가위') or (player_choices == '보' and computer_choice == '바위'):
+    print('win')
+else:
+    print('lose')
 
-    result = []
+result = []
 
 
