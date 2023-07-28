@@ -18,7 +18,7 @@ while True:
     x,y = map(int, input().split())
 
     if gird[y][x] == 'M':
-        print('축하힙니다! 두더지 잡았다')
+        print('축하합니다! 두더지 잡았다')
         grid[y][x] = 'X'
     else:
         print('우와! 아쉽다 ㅠㅠㅠ')

@@ -2,8 +2,11 @@ import tkinter as tk
 from tkinter import *
 import subprocess
 
+#게임의 개수
+MAX = 8
+
 #게임 종류
-python_turtle = "./Lab_Project/sample_file_1.py"
+python_turtle = "./Lab_Project/turtle_pen.py"
 
 
 window = tk.Tk()
