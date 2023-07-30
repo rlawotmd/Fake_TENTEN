@@ -5,7 +5,6 @@
 
 
 import time 
-
 import random
 
 #플레이어에게 입력받기 
@@ -13,10 +12,14 @@ import random
 player_choices = ['가위', '바위', '보']
 
 def get_choice():
-    a = input('가위 바위 보! :')     
-    if a in player_choices:
-        return get_choice(a)
-    return 
+    while True:
+        a = input('가위 바위 보 :')    
+        if a in player_choices:
+            return a
+        print('잘못된 입력입니다. 다시 입력해주세요. ')
+
+#플레이어가 가위바위보 중 하나 고르기
+player_choice = get_choice()
 
 #컴퓨터가 가위바위보 중 하나 고르기
 computer_choice = random.choice(player_choices)
@@ -25,12 +28,14 @@ computer_choice = random.choice(player_choices)
 if player_choice == computer_choice:
     print('tie')
 elif (player_choice == '가위' and computer_choice == '보') or \
-    (player_choice == '바위' and computer_choice = '가위')or \
-    (player_choice == '보' and computer_choice == '바위'):
+     (player_choice == '바위' and computer_choice = '가위')or \
+     (player_choice == '보' and computer_choice == '바위'):
     print('win')
+    result.append('win')
 else:
     print('lose')
+    result.append('lose')
 
-result = []
+print(result)
 
 
