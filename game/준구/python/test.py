@@ -52,9 +52,5 @@ while True:
             rad -= stop_time
             degree += rad
 
-<<<<<<< HEAD
     screen.blit(img2, (200, 430))
-=======
-    screen.blit(img2, (70, 180))
->>>>>>> ea9a5307fa22b7480c697788c6c6c29d9703c8ec
     pygame.display.flip()
