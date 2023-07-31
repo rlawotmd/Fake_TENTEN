@@ -18,7 +18,7 @@ screen = pygame.display.set_mode((1200, 900), DOUBLEBUF)
 pygame.display.set_caption('돌림판')
 
 img = pygame.image.load('./python/images.png')
-
+img2 = pygame.image.load('./python/images2.png')
 
 degree = 0
 flag = True
@@ -55,5 +55,6 @@ while True:
             rad -= stop_time
             degree += rad
 
+    screen.blit(img2, (70, 180))
     pygame.display.flip()
     clock.tick(TARGET_FPS)
