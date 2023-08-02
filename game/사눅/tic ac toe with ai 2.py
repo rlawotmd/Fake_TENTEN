@@ -10,11 +10,7 @@ ai = 'O'
 
 time_limit = 20
 time_up = False
-
-def print_timer(seconds):
-    minutes = seconds // 60
-    seconds = seconds % 60
-    print(f"Time left: {minutes:02d}:{seconds:02d}")
+print("시간은 20초입니다. 시간이 끝나면 게임을 끝!!!")
 
 def clear_screen():
     if platform.system() == 'Windows':
@@ -96,11 +92,7 @@ def play_game():
     # Countdown timer thread
     def timer_thread():
         global time_up
-        for t in range(time_limit, 0, -1):
-            if time_up:
-                break
-            print_timer(t)
-            time.sleep(1)
+        time.sleep(time_limit)
         time_up = True
 
     countdown_thread = threading.Thread(target=timer_thread)
