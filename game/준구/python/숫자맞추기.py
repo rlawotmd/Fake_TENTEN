@@ -5,7 +5,7 @@ n = 0
 bool = False
 answer = int(input('1~99사이의 정수를 입력해주세요: '))
 
-for i in range(7):
+for i in range(6):
     if answer > num:
         print('DOWN')
         answer = int(input('1~99사이의 정수를 입력하세요: '))
