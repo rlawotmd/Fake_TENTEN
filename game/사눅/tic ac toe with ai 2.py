@@ -8,9 +8,8 @@ board = [" " for _ in range(9)]
 player = 'X'
 ai = 'O'
 
-time_limit = 20
+time_limit = 60
 time_up = False
-print("시간은 20초입니다. 시간이 끝나면 게임을 끝!!!")
 
 def clear_screen():
     if platform.system() == 'Windows':
@@ -20,6 +19,7 @@ def clear_screen():
 
 def display_board():
     clear_screen()
+    print("시간은 1분입니다. 시간이 끝나면 게임을 끝!!!")
     print("  ")
     print("╔═══╦═══╦═══╗")
     for i in range(0, 9, 3):
