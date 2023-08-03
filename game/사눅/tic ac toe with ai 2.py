@@ -82,10 +82,6 @@ def ai_move():
                 best_move = i
     board[best_move] = ai
 
-def reset_game():
-    global board
-    board = [" " for _ in range(9)]
-
 def play_game():
     current_player = player
 
