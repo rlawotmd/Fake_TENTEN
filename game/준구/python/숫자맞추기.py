@@ -24,3 +24,6 @@ for i in range(7):
 
 if bool == False:
     print('아쉽게도 못맞췄습니다. 다음 기회에~~')
+
+
+input()
