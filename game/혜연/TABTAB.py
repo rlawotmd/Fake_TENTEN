@@ -2,6 +2,7 @@ import turtle as t
 import pygame
 from turtle import back
 import time
+import sys 
 
 pygame.init()
 
@@ -10,10 +11,11 @@ GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-'''background = pygame.display.set_mode((480, 360))
+background = pygame.display.set_mode((480, 360))
 pygame.display.set_caption("text")
 
-myFont = pygame.font.SysFont(None, 50)'''
+myFont = pygame.font.SysFont(None, 30)
+
 
 
 play = True
@@ -23,8 +25,8 @@ while play:
             play = False
 
     background.fill((0,0,0))
-    myText = myFont.render("10sec", True, WHITE)
-    background.blit(myText, (100,100))
+    myText = myFont.render("Close this window to turn the game on.", True, WHITE)
+    background.blit(myText, (50,150))
     pygame.display.update()
 
 
@@ -55,11 +57,11 @@ def count_clicks_within_time_limit(time_limit):
     #클릭 기록 창이 꺼져야 게임 결과창이 뜨나
     #터틀로 텍스트(
 
+    
+    screen.blit(text_clickScore, text_Rect)
 
-    '''screen.blit(text_clickScore, text_Rect)
-
-    text_Total = tabtab_font.render("Total Score", True, WHITE)
-    screen.blit(text_Total, [100, 400])'''
+    text_Total = tabtab_font.render("total score", True, WHITE)
+    screen.blit(text_Total, [100, 400])
 
     pygame.display.flip()
 
