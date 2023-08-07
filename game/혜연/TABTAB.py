@@ -33,8 +33,8 @@ while play:
 
 
 def count_clicks_within_time_limit(time_limit):
-    screen_width = 500
-    screen_height = 700 
+    screen_width = 480
+    screen_height = 360
 
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("TOTAL SCORE")
@@ -62,10 +62,10 @@ def count_clicks_within_time_limit(time_limit):
     
     screen.blit(text_clickScore, text_Rect)
 
-    text_Total = tabtab_font.render("total score     =", True, WHITE)
-    screen.blit(text_Total, [130, 400])
+    text_Total = tabtab_font.render("total score =", True, WHITE)
+    screen.blit(text_Total, [100, 200])
     text_count = tabtab_font.render(str(click_count), True, WHITE)
-    screen.blit(text_count,[350, 400])
+    screen.blit(text_count,[350, 200])
 
     pygame.display.flip()
 
