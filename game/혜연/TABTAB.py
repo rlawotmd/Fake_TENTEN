@@ -1,8 +1,7 @@
-import turtle as t
 import pygame
 from turtle import back
 import time
-import sys 
+ 
 
 pygame.init()
 
@@ -76,6 +75,4 @@ def count_clicks_within_time_limit(time_limit):
 if __name__ == "__main__":
     time_limit_seconds = 10
 
-    print(f"터치 횟수 계산 중... (제한 시간: {time_limit_seconds}초)")
     click_count_result = count_clicks_within_time_limit(time_limit_seconds)
-    print(f"{click_count_result}")
