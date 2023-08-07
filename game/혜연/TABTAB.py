@@ -27,6 +27,8 @@ while play:
     background.fill((0,0,0))
     myText = myFont.render("Close this window to turn the game on.", True, WHITE)
     background.blit(myText, (50,150))
+    myText = myFont.render("<time limit 10sec>", True, WHITE)
+    background.blit(myText, (140,180))
     pygame.display.update()
 
 
@@ -60,8 +62,10 @@ def count_clicks_within_time_limit(time_limit):
     
     screen.blit(text_clickScore, text_Rect)
 
-    text_Total = tabtab_font.render("total score", True, WHITE)
-    screen.blit(text_Total, [100, 400])
+    text_Total = tabtab_font.render("total score     =", True, WHITE)
+    screen.blit(text_Total, [130, 400])
+    text_count = tabtab_font.render(str(click_count), True, WHITE)
+    screen.blit(text_count,[350, 400])
 
     pygame.display.flip()
 
