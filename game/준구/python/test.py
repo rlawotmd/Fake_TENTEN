@@ -22,8 +22,8 @@ img2 = pygame.image.load('./game/준구/python/images2.png')
 
 degree = 0
 flag = True
-rad = 100
-stop_time = 0.7
+rad = 10
+stop_time = 0.008
 
 while True:
     for event in pygame.event.get():
@@ -35,9 +35,6 @@ while True:
             if event.key == 32:
              if flag ==True:
                 flag = False
-             elif flag == False:
-                    flag = True
-                    fad = 100
 
     screen.fill(WHITE)
     
@@ -55,5 +52,5 @@ while True:
             rad -= stop_time
             degree += rad
 
-    screen.blit(img2, (70, 180))
+    screen.blit(img2, (200, 430))
     pygame.display.flip()
