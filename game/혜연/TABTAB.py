@@ -30,3 +30,4 @@ if __name__ == "__main__":
 
 #터치 횟수 안 뜸
 #time_count_result 변수 쓰임 찾기
+#push test
