@@ -8,9 +8,10 @@ MAX = 5
 
 #게임 종류
 random_wheel = "./game/준구/python/test.py" # 준구 - 돌림판
-Whack_a_Mole = "C:/Users/user/Documents/fake_tenten/Fake_TENTEN/game/사눅/두더지잡기/두더지 잡기.html" # 사눅 - 두더지잡기 #현재 절대경로로 실행해야 실행이 됨 상대경로로 할 수 있는지 찾기#
+Whack_a_Mole = "C:/Users/user/Documents/fake_tenten/Fake_TENTEN/game/사눅/두더지잡기/두더지 잡기.html" # 사눅 - 두더지잡기 #현재 절대경로로 실행해야 실행이 됨 상대경로로 할 수 있는지 찾기
 Tic_Tac_Toe = "./game/사눅/tic tac toe with ai 2.py" # 사눅 - 틱택토
 R_S_P = "./game/혜연/R.S.P.py" # 혜연 - 가위바위보
+TabTab = "./game/혜연/TABTAB.py"# 혜연 - 탭탭 존나게 갈겨
 
 window = tk.Tk()
 
@@ -34,8 +35,7 @@ logo2 = PhotoImage(file = "./main_image/logo.png")
 
 L_background = tk.Label(window, image = background, width = 800, height = 600)
 L_background.place(x = 0, y = 0)
-L_logo = tk.Label(window, image = logo, width = 296, height = 71,bg="#01185d")
-#L_logo.configure(background="SystemTransparent")
+L_logo = tk.Label(window, image = logo, width = 296, height = 71)
 L_logo.place(x = 250, y = 20)
 L_logo2 = tk.Label(window, image = logo2, width = 296, height = 71)
 L_logo2.place(x = 250, y = 100)
