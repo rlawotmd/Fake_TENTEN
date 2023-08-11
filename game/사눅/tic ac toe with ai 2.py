@@ -11,6 +11,7 @@ ai = 'O'
 time_limit = 60
 time_up = False
 
+
 def clear_screen():
     if platform.system() == 'Windows':
         os.system('cls')
@@ -19,7 +20,7 @@ def clear_screen():
 
 def display_board():
     clear_screen()
-    print("시간은 1분입니다. 시간이 끝나면 게임을 끝!!!")
+    print("남은 시간은",{time_limit},"초입니다. 시간이 끝나면 게임을 끝!!!")
     print("  ")
     print("╔═══╦═══╦═══╗")
     for i in range(0, 9, 3):
@@ -88,7 +89,15 @@ def play_game():
     # Countdown timer thread
     def timer_thread():
         global time_up
+        start_time = time.time()
         time.sleep(time_limit)
+        elapsed_time = time.time() - start_time
+        if not time_up and elapsed_time >= (time_limit - 40):
+            print(" ")
+            print("40초 남았다!!")
+        elif not time_up and elapsed_time >= (time_limit - 10):
+            print(" ")
+            print("10초 남았다!!")
         time_up = True
 
     countdown_thread = threading.Thread(target=timer_thread)
@@ -98,7 +107,6 @@ def play_game():
         if time_up:
             print("시간 끝났다! 게임 끝!!")
             break
-
         if current_player == player:
             display_board()
             position = input("Player " + current_player + ", 좌표를 입력 (1-9): ")
