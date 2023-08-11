@@ -3,15 +3,14 @@ import tkinter as tk
 from tkinter import *
 import subprocess
 import webbrowser
+#게임의 개수
+MAX = 5
 
 #게임 종류
 random_wheel = "./game/준구/python/test.py" # 준구 - 돌림판
-updown = "./game/준구/python/숫자맞추기.py" # 준구 - 숫자맞추기
-Whack_a_Mole = "C:/Users/rhs97/Documents/tenten/Fake_TENTEN/game/사눅/두더지잡기/두더지 잡기.html" # 사눅 - 두더지잡기 #현재 절대경로로 실행해야 실행이 됨 상대경로로 할 수 있는지 찾기
+Whack_a_Mole = "C:/Users/user/Documents/fake_tenten/Fake_TENTEN/game/사눅/두더지잡기/두더지 잡기.html" # 사눅 - 두더지잡기 #현재 절대경로로 실행해야 실행이 됨 상대경로로 할 수 있는지 찾기#
 Tic_Tac_Toe = "./game/사눅/tic tac toe with ai 2.py" # 사눅 - 틱택토
 R_S_P = "./game/혜연/R.S.P.py" # 혜연 - 가위바위보
-TabTab = "./game/혜연/TABTAB.py"# 혜연 - 탭탭 존나게 갈겨
-
 
 window = tk.Tk()
 
@@ -34,8 +33,9 @@ logo = PhotoImage(file = "./main_image/건전.png")
 logo2 = PhotoImage(file = "./main_image/logo.png")
 
 L_background = tk.Label(window, image = background, width = 800, height = 600)
-L_background.place(x = 0, y = 0)
-L_logo = tk.Label(window, image = logo, width = 296, height = 71,bg='#00195c')
+L_background.place(x = -2, y = 0)
+L_logo = tk.Label(window, image = logo, width = 296, height = 71,bg="#01185d")
+#L_logo.configure(background="SystemTransparent")
 L_logo.place(x = 250, y = 20)
 L_logo2 = tk.Label(window, image = logo2, width = 296, height = 71)
 L_logo2.place(x = 250, y = 100)
@@ -72,17 +72,17 @@ def call_random_wheel():
     #4 돌림판
 
 def call_Up_Down():
-    subprocess.call(["python", updown])
+    subprocess.call(["python", random_wheel])
     #5 업다운
 
 def call_Tap_Tap():
-    subprocess.call(["python", TabTab])
+    subprocess.call(["python", random_wheel])
     #6 탭탭
 
 
 #랜덤 게임 호출 함수
 def call_random_game():
-    randomnumber =  random.randint(1,6)
+    randomnumber =  random.randint(1,7)
     if(randomnumber == 1):
         call_R_S_O()#1
     elif(randomnumber ==2):
@@ -93,7 +93,7 @@ def call_random_game():
         call_random_wheel()#4
     elif(randomnumber ==5):
         call_Up_Down()#5
-    elif(randomnumber ==6):
+    elif(randomnumber == 6):
         call_Tap_Tap()#6
     
 #게임 종료버튼 함수
@@ -104,28 +104,28 @@ def quit():
 
 
 #게임 실행하는 버튼 생성
-button = tk.Button(window, image = rkdnlqkdnlqh, text="가위바위보 실행", command = call_R_S_O, width = 300, height = 75)
+button = tk.Button(window, image = rkdnlqkdnlqh, text="가위바위보 실행", command = call_R_S_O, width = 300, height = 75, background="#ec1c24")
 button.place(x = 100, y = 190)
 
-button = tk.Button(window, image = xlrxorxh, text="틱택토 실행", command = call_Tic_Tac_Toe, width = 300, height = 75)
+button = tk.Button(window, image = xlrxorxh, text="틱택토 실행", command = call_Tic_Tac_Toe, width = 300, height = 75, background="#ff7f27")
 button.place(x = 410, y = 190)
 
-button = tk.Button(window, image = enejwlwkqrl, text="두더지잡기 실행", command = call_Whack_A_Mole, width = 300, height = 75)
+button = tk.Button(window, image = enejwlwkqrl, text="두더지잡기 실행", command = call_Whack_A_Mole, width = 300, height = 75, background="#f7e8a7")
 button.place(x = 100, y = 280)
 
-button = tk.Button(window, image = ehfflavks, text="돌림판 실행", command = call_random_wheel, width = 300, height = 75)
+button = tk.Button(window, image = ehfflavks, text="돌림판 실행", command = call_R_S_O, width = 300, height = 75, background="#f7e8a7")
 button.place(x = 410, y = 280)
 
-button = tk.Button(window, image = djqekdns, text="업다운 실행", command = call_Up_Down, width = 300, height = 75)
+button = tk.Button(window, image = djqekdns, text="업다운 실행", command = call_Whack_A_Mole, width = 300, height = 75, background="#3f48cc")
 button.place(x = 100, y = 370)
 
-button = tk.Button(window, image = xoqxoq, text="탭탭 실행", command = call_Tap_Tap, width = 300, height = 75)
+button = tk.Button(window, image = xoqxoq, text="탭탭 실행", command = call_R_S_O, width = 300, height = 75, background="#a135a3")
 button.place(x = 410, y = 370)
 
-button = tk.Button(window, image = godqhrqjxms, text="행복 버튼 실행", command = call_random_game, width = 300, height = 75)
+button = tk.Button(window, image = godqhrqjxms, text="행복 버튼 실행", command = call_R_S_O, width = 300, height = 75, background="#ffaec8")
 button.place(x = 100, y = 460)
 
-button = tk.Button(window, image = gustodtkfrl, text="현생살기 실행", command = quit, width = 300, height = 75)
+button = tk.Button(window, image = gustodtkfrl, text="현생살기 실행", command = quit, width = 300, height = 75, background="#00caff")
 button.place(x = 410, y = 460)
 
 
