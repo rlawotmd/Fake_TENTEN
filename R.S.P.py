@@ -1,0 +1,148 @@
+#화면에 가위 바위 보 띄워놓고
+#컴퓨터도 가위바위보 중 하나 고르게 하
+#이기면 3점 비기면 1점 지면 0점 
+#제한시간 10초  
+
+import turtle as t
+import time 
+import random
+
+def com_choice():
+    rand_choice = random.randint(0, 2)
+    com.shape(images[rand_choice])
+    return com_list[rand_choice]
+
+def result_print(user_c, com_c):
+    global user_score, com_score
+    t.clear()
+    t.goto(0, -100)
+    if user_c == com_c:
+        t.write("무승부", False, "center", ("", 50))
+    elif win_case[user_c] == com_c:
+        user_score += 1
+        user_pen.clear()
+        user_pen.write(user_score, False, "center", ("", 50))
+        t.wirte("승", False, "center", ("", 50))
+    else:
+        com_score += 1
+        com_pen.clear()
+        com_pen.write(com_score, False, "center", ("", 50))
+        t.write("패", False, "center", ("", 50))
+        
+
+
+#컴퓨터 선택 - 랜덤
+#승부 결과 판정
+def rock():
+    user.shape(rock_gif)
+    com = com_choice()
+    result_print("rock", com)
+
+def scissor():
+    user.shape(scissor_gif)
+    com = com_choice()
+    result_print("scissor", com)
+
+def paper():
+    user.shape(paper_gif)
+    com = com_choice()
+    result_print("paper", com)
+
+t.bgcolor("YELLOW")
+t.title("가위바위보")
+t.ht()
+t.up()
+
+rock_gif = "game/혜연/images/rock.gif"
+scissor_gif = "game/혜연/images/scissor.gif" 
+paper_gif = "game/혜연/images/paper.gif"
+t.addshape(rock_gif)
+t.addshape(scissor_gif)
+t.addshape(paper_gif)
+
+images = [rock_gif, scissor_gif, paper_gif]
+com_list = ["rock", "scissor", "paper"]
+win_case = {"rock":"scissor", "scissor":"paper", "paper":"rock"}
+user_score = 0
+com_score = 0
+
+
+#나
+user = t.Turtle()
+user.up()
+user.speed(0)
+user.goto(-200, 200)
+user.write("나", False, "center", ("", 50))
+user.goto(-200, -100)
+user.shape(rock_gif)
+
+#컴퓨터
+com = t.Turtle()
+com.up()
+com.speed(0)
+com.goto(200, 200)
+com.write("컴퓨터", False, "center", ("", 50))
+com.goto(200, -100)
+com.shape(rock_gif)
+
+#나의 점수
+user_pen = t.Turtle()
+user_pen.ht()
+user_pen.up()
+user_pen.goto(-200, 100)
+user_pen.write(user_score, False, "center", ("", 50))
+
+#컴퓨터 점수
+com_pen = t.Turtle()
+com_pen.ht()
+com_pen.up()
+com_pen.goto(200, 100)
+com_pen.write(com_score, False, "center", ("", 50))
+
+
+player = t.Turtle()
+screen = player.getscreen()
+
+screen.onkeypress(rock, "a") #유저 A 키
+screen.onkeypress(scissor, "s") #유저 S 키
+screen.onkeypress(paper, "d") #유저 D 키
+
+screen.listen()
+t.done()
+
+#플레이어에게 입력받기 
+#(가위 = 0, 바위 =1, 보=2)
+player_choices = ['가위', '바위', '보']
+
+#화면에 가위바위보 뜨게 
+
+def get_choice():
+    while True:
+        a = input('가위 바위 보 :')    
+        if a in player_choices:
+            return a
+        print('잘못된 입력입니다. 다시 입력해주세요. ')
+
+#플레이어가 가위바위보 중 하나 고르기
+player_choice = get_choice()
+
+#컴퓨터가 가위바위보 중 하나 고르기
+computer_choice = random.choice(player_choices)
+
+#승패판정
+
+result = ''
+
+if player_choice == computer_choice:
+    print('tie')
+elif (player_choice == '가위' and computer_choice == '보') or \
+     (player_choice == '바위' and computer_choice == '가위')or \
+     (player_choice == '보' and computer_choice == '바위'):
+    print('win')
+    result.append('win')
+else:
+    print('lose')
+    result.append('lose')
+
+print(result)
+
