@@ -3,7 +3,7 @@ import time
 import random
 
 t.up()
-t.goto(0 , 110)
+t.goto(0 , 300)
 t.write("a : 가위  s : 바위  d : 보", False, "center", ("", 30) )
 
 t.goto(0, -300)
@@ -17,12 +17,12 @@ def com_choice():
 def result_print(user_c, com_c):
     global user_score, com_score
     if user_score == 5:
-        t.goto(0, -200)
+        t.goto(0, -350)
         t.write("플레이어 승!", False, "center", ("", 80))
         time.sleep(5)
         t.bye()
     elif com_score == 5:
-        t.goto(0, -200)
+        t.goto(0, -350)
         t.write("플레이어 패!", False, "center", ("", 80))
         time.sleep(5)
         t.bye()
