@@ -1,17 +1,32 @@
+import time
+import os
+import platform
+
 board = [" " for _ in range(9)]
 
 player = 'X'
 ai = 'O'
 
+time_limit = 60
+time_up = False
+
+
+def clear_screen():
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
+
 def display_board():
-    print("---------------")
-    print("|", board[0], "|", board[1], "|", board[2], "|")
-    print("---------------")
-    print("|", board[3], "|", board[4], "|", board[5], "|")
-    print("---------------")
-    print("|", board[6], "|", board[7], "|", board[8], "|")
-    print("---------------")
-    
+    clear_screen()
+    print("휴대폰 자판 기준")
+    print("╔═══╦═══╦═══╗")
+    for i in range(0, 9, 3):
+        print("║", board[i], "║", board[i + 1], "║", board[i + 2], "║")
+        if i < 6:
+            print("╠═══╬═══╬═══╣")
+    print("╚═══╩═══╩═══╝")
+
 def check_win(player):
     win_conditions = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -22,18 +37,10 @@ def check_win(player):
         if board[condition[0]] == board[condition[1]] == board[condition[2]] == player:
             return True
     return False
-    
+
 def check_draw():
     return " " not in board
 
-def evaluate():
-    if check_win(ai):
-        return 1
-    elif check_win(player):
-        return -1
-    else:
-        return 0
-    
 def minimax(depth, maximizing_player):
     if check_win(player):
         return -1
@@ -41,7 +48,7 @@ def minimax(depth, maximizing_player):
         return 1
     elif check_draw():
         return 0
-    
+
     if maximizing_player:
         max_eval = float('-inf')
         for i in range(9):
@@ -58,13 +65,12 @@ def minimax(depth, maximizing_player):
                 board[i] = player
                 eval = minimax(depth + 1, True)
                 board[i] = " "
-                min_eval = min(min_eval,eval)
-                return min_eval
-                
+                min_eval = min(min_eval, eval)
+        return min_eval
 
 def ai_move():
     best_score = float('-inf')
-    beat_move = -1
+    best_move = -1
     for i in range(9):
         if board[i] == " ":
             board[i] = ai
@@ -77,18 +83,22 @@ def ai_move():
 
 def play_game():
     current_player = player
+
     while True:
+        if time_up:
+            print("시간 끝났다! 게임 끝!!")
+            break
         if current_player == player:
             display_board()
-            position = input("Player" + current_player + ", 좌표를 입력 (1-9): ")
+            position = input("Player " + current_player + ", 좌표를 입력 (1-9): ")
             position = int(position) - 1
-            
+
             if board[position] == " ":
                 board[position] = current_player
-                
+
                 if check_win(current_player):
                     display_board()
-                    print("player" + current_player + "이겼다!")
+                    print("Player " + current_player + " 이겼다!")
                     break
                 elif check_draw():
                     display_board()
@@ -100,17 +110,19 @@ def play_game():
                 print("무효! 다시 해보세요.")
         else:
             ai_move()
-            
+
             if check_win(current_player):
                 display_board()
-                print("Ai 이겼다!")
+                print("AI 이겼다!")
                 break
             elif check_draw():
                 display_board()
-                print("무승부입나다!")
+                print("무승부입니다")
                 break
             else:
                 current_player = player
-                
-play_game()
-                
+while True:
+    play_game()
+    time.sleep(5)
+    break
+
