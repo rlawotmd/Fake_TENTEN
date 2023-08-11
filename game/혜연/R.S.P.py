@@ -16,12 +16,12 @@ def com_choice():
 
 def result_print(user_c, com_c):
     global user_score, com_score
-    if user_score == 5:
+    if user_score >= 5:
         t.goto(0, -350)
         t.write("플레이어 승!", False, "center", ("", 80))
         time.sleep(5)
         t.bye()
-    elif com_score == 5:
+    elif com_score >= 5:
         t.goto(0, -350)
         t.write("플레이어 패!", False, "center", ("", 80))
         time.sleep(5)
