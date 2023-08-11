@@ -1,12 +1,6 @@
-#화면에 가위 바위 보 띄워놓고
-#컴퓨터도 가위바위보 중 하나 고르게 하
-#이기면 3점 비기면 1점 지면 0점 
-#제한시간 10초  
-
 import turtle as t
 import time 
 import random
-t.ht()
 
 t.up()
 t.goto(0 , 110)
@@ -22,6 +16,18 @@ def com_choice():
 
 def result_print(user_c, com_c):
     global user_score, com_score
+    if user_score == 5:
+        t.goto(0, -200)
+        t.write("플레이어 승!", False, "center", ("", 80))
+        time.sleep(5)
+        t.bye()
+    elif com_score == 5:
+        t.goto(0, -200)
+        t.write("플레이어 패!", False, "center", ("", 80))
+        time.sleep(5)
+        t.bye()
+    
+
     t.clear()
     t.goto(0, -100)
     if user_c == com_c:
@@ -36,6 +42,8 @@ def result_print(user_c, com_c):
         com_pen.clear()
         com_pen.write(com_score, False, "center", ("", 50))
         t.write("패", False, "center", ("", 50))
+
+    
         
 
 
@@ -117,6 +125,3 @@ screen.onkeypress(paper, "d") #유저 D 키
 
 screen.listen()
 t.done()
-
-
-#다섯판 진행 후 이겼는지 졌는지 결과 출력
