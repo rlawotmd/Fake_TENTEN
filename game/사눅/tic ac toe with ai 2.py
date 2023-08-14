@@ -20,7 +20,7 @@ def print_timer(seconds):
     print(f"남은 시간: {seconds:02d}")
 def display_board():
     clear_screen()
-    print("줄 시간은",(time_limit),"초입니다. 시간이 끝나면 게임을 끝!!!")
+    print("총 시간은",(time_limit),"초입니다. 시간이 끝나면 게임을 끝!!!")
     print("  ")
     print("╔═══╦═══╦═══╗")
     for i in range(0, 9, 3):
@@ -104,7 +104,7 @@ def play_game():
             break
         if current_player == player:
             display_board()
-            position = input("Player " + current_player + ", 좌표를 입력 (1-9): ")
+            position = input("Player " + current_player + ", 좌표를 입력 (1-9): \n")
             position = int(position) - 1
 
             if board[position] == " ":
@@ -137,6 +137,8 @@ def play_game():
                 current_player = player
 while True:
     play_game()
-    com = input("어땠습니까? (Good/No):")
+    com = input("어땠습니까? (Good/No) :")
     if com.lower() != 'Good':
+        break
+    else:
         break
