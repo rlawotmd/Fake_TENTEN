@@ -34,7 +34,7 @@ logo = PhotoImage(file = "./main_image/건전.png")
 logo2 = PhotoImage(file = "./main_image/logo.png")
 
 L_background = tk.Label(window, image = background, width = 800, height = 600)
-L_background.place(x = 0, y = 0)
+L_background.place(x = -2, y = 0)
 L_logo = tk.Label(window, image = logo, width = 296, height = 71,bg='#00195c')
 L_logo.place(x = 250, y = 20)
 L_logo2 = tk.Label(window, image = logo2, width = 296, height = 71)
