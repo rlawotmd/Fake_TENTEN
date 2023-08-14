@@ -108,7 +108,8 @@ def play_game():
             display_board()
             position = input("Player " + current_player + ", 좌표를 입력 (1-9): \n")
             position = int(position) - 1
-
+            if position > 9 or position < 1:
+                continue
             if board[position] == " ":
                 board[position] = current_player
 
