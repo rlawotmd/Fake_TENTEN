@@ -17,8 +17,8 @@ pygame.init()
 screen = pygame.display.set_mode((1200, 900), DOUBLEBUF) 
 pygame.display.set_caption('돌림판')
 
-img = pygame.image.load('./game/준구/python/images.png')
-img2 = pygame.image.load('./game/준구/python/images2.png')
+img = pygame.image.load('./game/Random_Wheel/images.png')
+img2 = pygame.image.load('./game/Random_Wheel/images2.png')
 
 degree = 0
 flag = True

@@ -5,12 +5,12 @@ import subprocess
 import webbrowser
 
 #게임 종류
-random_wheel = "./game/준구/python/test.py" # 준구 - 돌림판
-updown = "./game/준구/python/숫자맞추기.py" # 준구 - 숫자맞추기
-Whack_a_Mole = "C:/Users/rhs97/Documents/tenten/Fake_TENTEN/game/사눅/두더지잡기/두더지 잡기.html" # 사눅 - 두더지잡기 #현재 절대경로로 실행해야 실행이 됨 상대경로로 할 수 있는지 찾기
-Tic_Tac_Toe = "./game/사눅/tictactoe.py" # 사눅 - 틱택토
-R_S_P = "./game/혜연/R.S.P.py" # 혜연 - 가위바위보
-TabTab = "./game/혜연/TABTAB.py"# 혜연 - 탭탭 존나게 갈겨
+random_wheel = "./game/Random_Wheel/Random_Wheel.py" # 준구 - 돌림판
+updown = "./game/Up_Down/Up_Down.py" # 준구 - 숫자맞추기 업다운
+Whack_a_Mole = "C:/PythonGame/game/Whack_a_Mole/두더지 잡기.html" # 사눅 - 두더지잡기 #현재 절대경로로 실행해야 실행이 됨 상대경로로 할 수 있는지 찾기
+Tic_Tac_Toe = "./game/TicTacToe/TicTacToe.py" # 사눅 - 틱택토
+R_S_P = "./game/R_S_P/R_S_P.py" # 혜연 - 가위바위보
+TabTab = "./game/TabTab/TabTab.py"# 혜연 - 탭탭 존나게 갈겨
 
 
 window = tk.Tk()
@@ -104,33 +104,32 @@ def quit():
 
 
 #게임 실행하는 버튼 생성
-button = tk.Button(window, image = rkdnlqkdnlqh, text="가위바위보 실행", command = call_R_S_O, width = 300, height = 75)
+button = tk.Button(window, image = rkdnlqkdnlqh, text="가위바위보 실행", command = call_R_S_O, width = 300, height = 75, background="#ec1c24")
 button.place(x = 100, y = 190)
 
-button = tk.Button(window, image = xlrxorxh, text="틱택토 실행", command = call_Tic_Tac_Toe, width = 300, height = 75)
+button = tk.Button(window, image = xlrxorxh, text="틱택토 실행", command = call_Tic_Tac_Toe, width = 300, height = 75, background="#ff7f27")
 button.place(x = 410, y = 190)
 
-button = tk.Button(window, image = enejwlwkqrl, text="두더지잡기 실행", command = call_Whack_A_Mole, width = 300, height = 75)
+button = tk.Button(window, image = enejwlwkqrl, text="두더지잡기 실행", command = call_Whack_A_Mole, width = 300, height = 75, background="#f7e8a7")
 button.place(x = 100, y = 280)
 
-button = tk.Button(window, image = ehfflavks, text="돌림판 실행", command = call_random_wheel, width = 300, height = 75)
+button = tk.Button(window, image = ehfflavks, text="돌림판 실행", command = call_random_wheel, width = 300, height = 75, background="#f7e8a7")
 button.place(x = 410, y = 280)
 
-button = tk.Button(window, image = djqekdns, text="업다운 실행", command = call_Up_Down, width = 300, height = 75)
+button = tk.Button(window, image = djqekdns, text="업다운 실행", command = call_Up_Down, width = 300, height = 75, background="#3f48cc")
 button.place(x = 100, y = 370)
 
-button = tk.Button(window, image = xoqxoq, text="탭탭 실행", command = call_Tap_Tap, width = 300, height = 75)
+button = tk.Button(window, image = xoqxoq, text="탭탭 실행", command = call_Tap_Tap, width = 300, height = 75, background="#a135a3")
 button.place(x = 410, y = 370)
 
-button = tk.Button(window, image = godqhrqjxms, text="행복 버튼 실행", command = call_random_game, width = 300, height = 75)
+button = tk.Button(window, image = godqhrqjxms, text="행복 버튼 실행", command = call_random_game, width = 300, height = 75, background="#ffaec8")
 button.place(x = 100, y = 460)
 
-button = tk.Button(window, image = gustodtkfrl, text="현생살기 실행", command = quit, width = 300, height = 75)
+button = tk.Button(window, image = gustodtkfrl, text="현생살기 실행", command = quit, width = 300, height = 75, background="#00caff")
 button.place(x = 410, y = 460)
 
 
 window.mainloop() #윈도우가 종료될 때까지 실행
 
-
-
-
+#기본경로 C:\PythonGame\game/main.py
+#가 있어야 한다.

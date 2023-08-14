@@ -69,9 +69,9 @@ t.title("가위바위보")
 t.ht()
 t.up()
 
-rock_gif = "game/혜연/images/rock.gif"
-scissor_gif = "game/혜연/images/scissor.gif" 
-paper_gif = "game/혜연/images/paper.gif"
+rock_gif = "game/R_S_P/rock.gif"
+scissor_gif = "game/R_S_P/scissor.gif" 
+paper_gif = "game/R_S_P/paper.gif"
 t.addshape(rock_gif)
 t.addshape(scissor_gif)
 t.addshape(paper_gif)
