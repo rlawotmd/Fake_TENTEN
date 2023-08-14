@@ -20,7 +20,7 @@ def print_timer(seconds):
     print(f"남은 시간: {seconds:02d}")
 def display_board():
     clear_screen()
-    print("총 시간은",(time_limit),"초입니다. 시간이 끝나면 게임을 끝!!!")
+    print("줄 시간은",(time_limit),"초입니다. 시간이 끝나면 게임을 끝!!!")
     print("  ")
     print("╔═══╦═══╦═══╗")
     for i in range(0, 9, 3):
@@ -84,12 +84,13 @@ def ai_move():
 
 def play_game():
     current_player = player
+    game_over = False
 
     # Countdown timer thread
     def timer_thread():
         global time_up
         for t in range(time_limit,0,-1):
-            if time_up:
+            if time_up or game_over:
                 break
             print_timer(t)
             time.sleep(1)
@@ -101,17 +102,19 @@ def play_game():
     while True:
         if time_up:
             print("시간 끝났다! 게임 끝!!")
+            game_over = True
             break
         if current_player == player:
             display_board()
-            position = input("Player " + current_player + ", 좌표를 입력 (1-9): \n")
+            position = input("Player " + current_player + ", 좌표를 입력 (1-9): ")
             position = int(position) - 1
 
             if board[position] == " ":
                 board[position] = current_player
 
-                if check_win(current_player):
+                if check_win(current_player) or check_draw():
                     display_board()
+                    game_over = True
                     print("Player " + current_player + " 이겼다!")
                     break
                 elif check_draw():
@@ -125,8 +128,9 @@ def play_game():
         else:
             ai_move()
 
-            if check_win(current_player):
+            if check_win(current_player) or check_draw():
                 display_board()
+                game_over = True
                 print("AI 이겼다!")
                 break
             elif check_draw():
@@ -135,10 +139,9 @@ def play_game():
                 break
             else:
                 current_player = player
+    countdown_thread.join()
 while True:
     play_game()
-    com = input("어땠습니까? (Good/No) :")
+    com = input("어땠습니까? (Good/No):")
     if com.lower() != 'Good':
-        break
-    else:
         break
