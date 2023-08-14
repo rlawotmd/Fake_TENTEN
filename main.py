@@ -7,7 +7,7 @@ import webbrowser
 #게임 종류
 random_wheel = "./game/Random_Wheel/Random_Wheel.py" # 준구 - 돌림판
 updown = "./game/Up_Down/Up_Down.py" # 준구 - 숫자맞추기 업다운
-Whack_a_Mole = "C:/PythonGame/game/Whack_a_Mole/두더지 잡기.html" # 사눅 - 두더지잡기 #현재 절대경로로 실행해야 실행이 됨 상대경로로 할 수 있는지 찾기
+Whack_a_Mole = "C:/PythonGame/game/Whack_a_Mole/두더지_잡기.html" # 사눅 - 두더지잡기 #현재 절대경로로 실행해야 실행이 됨 상대경로로 할 수 있는지 찾기
 Tic_Tac_Toe = "./game/TicTacToe/TicTacToe.py" # 사눅 - 틱택토
 R_S_P = "./game/R_S_P/R_S_P.py" # 혜연 - 가위바위보
 TabTab = "./game/TabTab/TabTab.py"# 혜연 - 탭탭 존나게 갈겨
