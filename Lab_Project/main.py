@@ -8,7 +8,7 @@ import webbrowser
 random_wheel = "./game/준구/python/test.py" # 준구 - 돌림판
 updown = "./game/준구/python/숫자맞추기.py" # 준구 - 숫자맞추기
 Whack_a_Mole = "C:/Users/rhs97/Documents/tenten/Fake_TENTEN/game/사눅/두더지잡기/두더지 잡기.html" # 사눅 - 두더지잡기 #현재 절대경로로 실행해야 실행이 됨 상대경로로 할 수 있는지 찾기
-Tic_Tac_Toe = "./game/사눅/tic tac toe with ai 2.py" # 사눅 - 틱택토
+Tic_Tac_Toe = "./game/사눅/tictactoe.py" # 사눅 - 틱택토
 R_S_P = "./game/혜연/R.S.P.py" # 혜연 - 가위바위보
 TabTab = "./game/혜연/TABTAB.py"# 혜연 - 탭탭 존나게 갈겨
 
