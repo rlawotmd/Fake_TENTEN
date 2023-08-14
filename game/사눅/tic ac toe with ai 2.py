@@ -149,4 +149,5 @@ while True:
     if com.lower() != 'good':
         break
     else :
+        print("감사합니다.")
         break
