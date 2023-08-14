@@ -146,7 +146,7 @@ def play_game():
 while True:
     play_game()
     com = input("어땠습니까? (Good/No):")
-    if com.lower() != 'Good':
+    if com.lower() != 'good':
         break
     else :
         break
