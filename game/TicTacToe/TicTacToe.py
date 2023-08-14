@@ -148,7 +148,9 @@ while True:
     com = input("어땠습니까? (Good/No):")
     if com.lower() == 'good':
         print("감사합니다")
+        input()
         break
     else :
         print("노력할게요")
+        input()
         break
