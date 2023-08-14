@@ -112,13 +112,14 @@ def play_game():
             if board[position] == " ":
                 board[position] = current_player
 
-                if check_win(current_player) or check_draw():
+                if check_win(current_player):
                     display_board()
                     game_over = True
                     print("Player " + current_player + " 이겼다!")
                     break
                 elif check_draw():
                     display_board()
+                    game_over = True
                     print("무승부입니다")
                     break
                 else:
@@ -128,13 +129,14 @@ def play_game():
         else:
             ai_move()
 
-            if check_win(current_player) or check_draw():
+            if check_win(current_player):
                 display_board()
                 game_over = True
                 print("AI 이겼다!")
                 break
             elif check_draw():
                 display_board()
+                game_over = True
                 print("무승부입니다")
                 break
             else:
